@@ -1,0 +1,58 @@
+*, *::before, *::after {
+    box-sizing: border-box; /* Allows the inclusion of padding and border in an element's total width and height */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: normal;
+}
+
+body {
+    padding: 0;   /* Used to generate space around an element's content inside of any defined borders (full control, use top, right, bottom, left. Input length or % */
+    margin: 0;    /* Used to generate space around elements outside of any defined borders. Similar to padding powers */
+    background: linear-gradient(to right, #0099ff, #ffffff) /* background is shorthand for various background-related properties */
+}
+
+.calculator-grid {
+    display: grid;            /* display specifies the display behavior (type of rendering box) of an element*/
+    justify-content: center;  /* aligns the items when the items do not use all available space on the x-axis (so to the center of the screen)*/
+    align-content: center;    /* aligns flex lines (align-items aligns flex items). So aligns content to the center of the y-axis*/
+    min-height: 100vh;        /* Fills 100% of the height all the time*/
+    grid-template-columns: repeat(4, 100px); /* Specifies the number of columns (and width(and below I specify rows instead of columns)) in a grid layout*/
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px); /* auto: The size of the columns is determined by the size of the container and on the size of the content of the items in the column*/
+}
+
+.calculator-grid > button {     /* only looking at properties with the button*/
+    cursor: pointer;            /* when the mouse hovers over a button, the cursor turns to the pointer!*/
+    font-size: 2rem;            /* font size (rem = Relative to font-size of the root element*/
+    border: 1px solid white;  /* specifies the border of all elements*/
+    outline: none;              /* removes the default outline*/
+    background-color: rgba(255, 255, 255, 0.75); /* fun with colors*/
+}
+
+.calculator-grid > button:hover { /* specifies when hovering over buttons!*/
+    background-color: rgba(255, 255, 255, .9);
+}
+
+.span-two {
+    grid-column: span 2; /* this class property spans two columns now for "AC" and "DEL"*/
+}
+
+.output { /* need to style the output now*/
+    grid-column: 1 / -1; /* first column to the last*/
+    background-color: rgba(0, 0, 0, .75);
+    display: flex;      /* flex displays an element as a block-level flex container (btw, flex item means the item that's being "create", so a "flexible" item*/
+    align-items: flex-end; /* items are positioned at the endo of the container*/
+    justify-content: space-around; /* creates space around the element! centers it basically*/
+    flex-direction: column; /* sets how the flex items are place in the container*/
+    padding: 10px;
+    word-wrap: break-word; /* allows long words to be able to be broken and wrap onto the next line*/
+    word-break: break-all; /* specifies how words should break when reaching the end of the line (break-all indicates word may be broken at any character)*/
+}
+
+.output .previous-operand {
+    color: rgba(255, 255, 255, .75);
+    font-size: 1.5rem;
+}
+
+.output .current-operand {
+    color: white;
+    font-size: 2.5rem;
+}
